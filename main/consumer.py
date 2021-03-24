@@ -1,12 +1,14 @@
 # amqps://fitqdpae:YO54htaZ5wRA_kTSt73mKKTIyvmaAHjG@coyote.rmq.cloudamqp.com/fitqdpae
 
 import pika
+import os
 import json
 from pika.spec import Queue
 from main import Product, db
 
 
-params = pika.URLParameters('amqps://fitqdpae:YO54htaZ5wRA_kTSt73mKKTIyvmaAHjG@coyote.rmq.cloudamqp.com/fitqdpae')
+AMQP_URI=os.environ['AMQP_URI']
+params = pika.URLParameters(AMQP_URI)
 
 connection = pika.BlockingConnection(params)
 
